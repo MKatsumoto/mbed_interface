@@ -6,23 +6,13 @@ find_package(catkin REQUIRED COMPONENTS
   serial
   std_msgs
   sensor_msgs
-  gecko_control
+  gecko_msgs
   message_generation
 )
 
-#add_message_files(
-#  FILES
-#  MbedTx.msg
-#)
-
-#generate_messages(
-#  DEPENDENCIES
-#  std_msgs
-#)
-
 catkin_package(
   INCLUDE_DIRS include
-  CATKIN_DEPENDS roscpp serial std_msgs sensor_msgs message_runtime
+  CATKIN_DEPENDS roscpp serial std_msgs sensor_msgs gecko_msgs message_runtime
 )
 
 include_directories(
@@ -44,5 +34,5 @@ target_link_libraries(mbed_interface_node
 )
 
 add_dependencies(mbed_interface_node
-  gecko_control_generate_messages_cpp
+  gecko_msgs_generate_messages_cpp
 )

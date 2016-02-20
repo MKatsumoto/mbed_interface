@@ -38,7 +38,7 @@ MbedInterface::MbedInterface(const std::string &id,
  *
  * @TODO: check
  */
-void MbedInterface::mbedTxCallback(const gecko_control::MbedTx::ConstPtr &msg)
+void MbedInterface::mbedTxCallback(const gecko_msgs::MbedTx::ConstPtr &msg)
 {
   tx_data_.at(2) = msg->command;
   if(ID_ == "LEFT") // get data for left
