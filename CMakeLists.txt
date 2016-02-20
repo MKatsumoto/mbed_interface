@@ -6,6 +6,7 @@ find_package(catkin REQUIRED COMPONENTS
   serial
   std_msgs
   sensor_msgs
+  gecko_control
   message_generation
 )
 
@@ -21,7 +22,6 @@ find_package(catkin REQUIRED COMPONENTS
 
 catkin_package(
   INCLUDE_DIRS include
-  LIBRARIES ${PROJECT_NAME}
   CATKIN_DEPENDS roscpp serial std_msgs sensor_msgs message_runtime
 )
 
