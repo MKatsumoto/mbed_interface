@@ -3,7 +3,7 @@
 
 #include <ros/ros.h>
 #include "serial/serial.h"
-#include "mbed_interface/MbedTx.h"
+#include "gecko_control/MbedTx.h"
 
 #include <string>
 #include <vector>
@@ -16,7 +16,7 @@ public:
                 const std::string& port,
                 const uint32_t baudrate = 115200,
                 const uint16_t timeout = 1000);
-  void mbedTxCallback(const mbed_interface::MbedTx::ConstPtr& msg);
+  void mbedTxCallback(const gecko_control::MbedTx::ConstPtr& msg);
   size_t writeTxData();
 
 private:

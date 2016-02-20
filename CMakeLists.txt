@@ -9,15 +9,15 @@ find_package(catkin REQUIRED COMPONENTS
   message_generation
 )
 
-add_message_files(
-  FILES
-  MbedTx.msg
-)
+#add_message_files(
+#  FILES
+#  MbedTx.msg
+#)
 
-generate_messages(
-  DEPENDENCIES
-  std_msgs
-)
+#generate_messages(
+#  DEPENDENCIES
+#  std_msgs
+#)
 
 catkin_package(
   INCLUDE_DIRS include
@@ -44,5 +44,5 @@ target_link_libraries(mbed_interface_node
 )
 
 add_dependencies(mbed_interface_node
-  mbed_interface_generate_messages_cpp
+  gecko_control_generate_messages_cpp
 )
