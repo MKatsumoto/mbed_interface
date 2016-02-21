@@ -16,7 +16,6 @@ public:
                 const std::string& port,
                 const uint32_t baudrate = 115200,
                 const uint16_t timeout = 1000);
-  void mbedTxCallback(const gecko_msgs::MbedTx::ConstPtr& msg);
   size_t writeTxData();
 
 private:
@@ -26,6 +25,7 @@ private:
   static const int TX_DATA_SIZE_ = 6; // mbed tx data size
   std::vector<uint8_t> tx_data_;
 
+  void mbedTxCallback(const gecko_msgs::MbedTx::ConstPtr& msg);
 };
 
 #endif // GECKO_MBED_INTERFACE_H_20160212_
