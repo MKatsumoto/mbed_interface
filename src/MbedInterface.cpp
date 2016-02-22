@@ -1,3 +1,4 @@
+#define DEBUG
 #include "mbed_interface/MbedInterface.h"
 
 /*!
@@ -21,8 +22,6 @@ MbedInterface::MbedInterface(const std::string &id,
     // TODO: Error Handling
   }
   mbed_sub_ = nh_.subscribe("mbed_tx", 100, &MbedInterface::mbedTxCallback, this);
-  tx_data_.at(0) = 0xff; // header
-  tx_data_.at(1) = 0xff; // header
 }
 
 /*!
@@ -40,6 +39,8 @@ MbedInterface::MbedInterface(const std::string &id,
  */
 void MbedInterface::mbedTxCallback(const gecko_msgs::MbedTx::ConstPtr &msg)
 {
+  tx_data_.at(0) = 0xff; // header
+  tx_data_.at(1) = 0xff; // header
   tx_data_.at(2) = msg->command;
   if(ID_ == "LEFT") // get data for left
   {
@@ -51,7 +52,9 @@ void MbedInterface::mbedTxCallback(const gecko_msgs::MbedTx::ConstPtr &msg)
     tx_data_.at(3) = msg->data[2];
     tx_data_.at(4) = msg->data[3];
   }
-  for (int i = 0; i < TX_DATA_SIZE_-1; i++)
+
+  tx_data_.at(5) = 0;
+  for (int i = 2; i < TX_DATA_SIZE_-1; i++)
   {
     tx_data_.at(5) += tx_data_.at(i); // check sum
   }
@@ -69,7 +72,7 @@ void MbedInterface::mbedTxCallback(const gecko_msgs::MbedTx::ConstPtr &msg)
  * \return A size_t representing the number of bytes actually written
  * to the serial port.
  */
-size_t MbedInterface::writeTxData()
+void MbedInterface::writeTxData()
 {
-  return serial::Serial::write(tx_data_);
+  serial::Serial::write(tx_data_);
 }

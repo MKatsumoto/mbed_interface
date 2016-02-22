@@ -16,7 +16,7 @@ public:
                 const std::string& port,
                 const uint32_t baudrate = 115200,
                 const uint16_t timeout = 1000);
-  size_t writeTxData();
+  void writeTxData();
 
 private:
   const std::string ID_;
