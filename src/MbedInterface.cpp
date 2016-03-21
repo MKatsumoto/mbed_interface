@@ -1,4 +1,4 @@
-#define DEBUG
+//#define DEBUG
 #include "mbed_interface/MbedInterface.h"
 
 /*!
